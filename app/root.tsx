@@ -22,6 +22,7 @@ import resetStyles from './styles/reset.css';
 import appStyles from './styles/app.css';
 import {Layout} from '~/components/Layout';
 
+
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
  */
@@ -167,7 +168,23 @@ export function ErrorBoundary() {
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
         <LiveReload nonce={nonce} />
-      </body>
+        <div id="stream-status">
+        Stream is not Live
+        </div>
+          <script src="js/xjs.js"></script>
+          <script src="js/main.js"></script>
+    <div id="twitch-embed"></div>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+ <script type="text/javascript">
+      new Twitch.Embed("twitch-embed", {
+        width: 854,
+        height: 480,
+        channel: "auxon0",
+        // Only needed if this page is going to be embedded on other websites
+        parent: ["www.entangleit.com", "entangleit.com"]
+      });
+    </script>
+</body>
     </html>
   );
 }
